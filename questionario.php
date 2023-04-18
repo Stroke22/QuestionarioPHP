@@ -32,9 +32,13 @@
         input[type="radio"] {
             margin-right: 5px;
         }
+        #pontuacao {
+    font-size: 2em;
+        }
     </style>
 </head>
 <body>
+
     <h1>Questionário</h1>
     <form method="post" action="resultado.php">
         <h2>Pergunta 1</h2>
@@ -71,8 +75,23 @@
         <input type="radio" name="pergunta5" value="1"> b) H<br>
         <input type="radio" name="pergunta5" value="2"> c) C<br>
         <input type="radio" name="pergunta5" value="3"> d) N<br>
-        <input type="submit" value="Enviar Respostas">
+        <input type="submit" name="submit" value="Enviar Respostas">
     </form>
-    
+    <?php
+        session_start();
+
+        // verifica se a pontuação está salva na variável de sessão
+        
+        if (isset($_SESSION['pontuacao'])) {
+        
+            // exibe a pontuação do usuário
+       
+        echo "<p id='pontuacao'>Você obteve uma pontuação de: " . $_SESSION['pontuacao'] . " pontos</p>";
+        
+        // remove a pontuação da variável de sessão para que não seja exibida novamente
+        unset($_SESSION['pontuacao']);
+        }
+    ?>
+
 </body>
 </html>

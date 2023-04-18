@@ -15,7 +15,11 @@
     $resposta5 = $_POST['pergunta5'];
     // Soma as respostas
 $pontuacao = $resposta1 + $resposta2 + $resposta3 + $resposta4 + $resposta5;
+
+session_start();
+$_SESSION['pontuacao'] = $pontuacao;
+header('location: questionario.php');
+exit();
 ?>
-<p>Você obteve a pontuação: <?php echo $pontuacao; ?></p>
 </body>
 </html>
