@@ -83,13 +83,23 @@
         // verifica se a pontuação está salva na variável de sessão
         
         if (isset($_SESSION['pontuacao'])) {
+            
+                // exibe a pontuação do usuário
         
-            // exibe a pontuação do usuário
-       
-        echo "<p id='pontuacao'>Você obteve uma pontuação de: " . $_SESSION['pontuacao'] . " pontos</p>";
-        
-        // remove a pontuação da variável de sessão para que não seja exibida novamente
-        unset($_SESSION['pontuacao']);
+            echo "<p id='pontuacao'>Você obteve uma pontuação de: " . $_SESSION['pontuacao'] . " pontos</p>";
+            
+            if($_SESSION['pontuacao'] < 4){
+                echo "Não Tóxico";
+
+            }else if($_SESSION['pontuacao'] < 7){
+                echo "Mais ou menos Tóxico";
+
+            }else {
+                echo "Tóxico";
+            }
+            
+            // remove a pontuação da variável de sessão para que não seja exibida novamente
+            unset($_SESSION['pontuacao']);
         }
     ?>
 
